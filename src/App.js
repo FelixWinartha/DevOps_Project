@@ -1,28 +1,45 @@
-import "./App.css"
-import NavigationBar from "./components/NavigationBar"
-import Intro from "./components/Intro"
-import Trending from "./components/Trending"
-import SuperHero from "./components/Superhero"
-
-import "./style/landingPage.css"
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import "./App.css";
+import NavigationBar from "./components/NavigationBar";
+import Intro from "./components/Intro";
+import Trending from "./components/Trending";
+import SuperHero from "./components/Superhero";
+import Login from "./components/Login"; // Import komponen Login
+import "./style/landingPage.css";
 
 function App() {
   return (
-    <div>
-      <div className="myBG">
-        <NavigationBar />
-        <Intro />
-      </div>
+    <Router>
+      <div>
+        <Routes>
+          {/* Halaman Home */}
+          <Route path="/" element={
+            <div className="myBG">
+              <NavigationBar />
+              <Intro />
+            </div>
+          } />
 
-      <div className="trending">
-        <Trending />
-      </div>
+          {/* Halaman Trending */}
+          <Route path="/trending" element={
+            <div className="trending">
+              <Trending />
+            </div>
+          } />
 
-      <div className="superhero">
-        <SuperHero />
+          {/* Halaman SuperHero */}
+          <Route path="/superhero" element={
+            <div className="superhero">
+              <SuperHero />
+            </div>
+          } />
+
+          {/* Halaman Login */}
+          <Route path="/login" element={<Login />} /> {/* Menambahkan route login */}
+        </Routes>
       </div>
-    </div>
-  )
+    </Router>
+  );
 }
 
-export default App
+export default App;
